@@ -1,4 +1,4 @@
-Flask Heroku
+Flask Heroku (and SQLAlchemy)
 ============
 
 <pre><code>
@@ -19,8 +19,12 @@ Flask Heroku
   ##         ##   ##   ##W  #   #:   E    EK  ;EK.,EK  EK   EE,:EE, ;E   ED KE.,EEE  
  #####      #####  ### W#   ####,         EK   ,KEEE   K#    DEEK.  iK   WK  KEEE.   
 
-
+ 
                     github.com/zachwill/flask_heroku
+                    
+                           (and SQLAlchemy)
+                           
+                     github.com/HexIce/flask_heroku
 
 </code></pre>
 
@@ -29,11 +33,12 @@ What is this?
 -------------
 
 A template to get your [Flask](http://flask.pocoo.org/) app running on
-[Heroku](https://www.heroku.com/) as fast as possible. For added
-convenience, the templates use [Twitter's Bootstrap
-project](http://twitter.github.com/bootstrap/) to help reduce the amount
-of time it's takes you as a developer to go from an idea to a working
-site.
+[Heroku](https://www.heroku.com/) with support for 
+[SQLAlchemy](http://www.sqlalchemy.org/) as fast as possible. 
+For added convenience, the templates use 
+[Twitter's Bootstrap project](http://twitter.github.com/bootstrap/) 
+to help reduce the amount of time it's takes you as a developer to go from an 
+idea to a working site.
 
 All of the CSS stylesheets are written using the [Less
 CSS](http://lesscss.org/) syntax (even Bootstrap's CSS). If you're using
@@ -55,8 +60,9 @@ be served through [`gunicorn`](http://gunicorn.org/) and
 Why should I use this?
 ----------------------
 
-Everything I've learned from writing and maintaining the [Flask
-Engine](https://github.com/zachwill/flask-engine) template for Google
+Everything the orginial creator [zachwill](https://github.com/zachwill/), 
+learned from writing and maintaining the 
+[Flask Engine](https://github.com/zachwill/flask-engine) template for Google
 App Engine has made its way into this repo, too. The goal is to make a
 simple repo that can be cloned and added to for the majority of projects
 going forward, while also staying minimal in size and complexity.
@@ -119,16 +125,34 @@ environment.
     $ pip install -r requirements.txt
 
 
+Setting up the Database
+------------------------
+
+SQLAlchemy supports many backends, you just have to fill in  DATABASE_URL in 
+the .env file with the relvent details. Remember that whatever you use locally
+Heroku uses PostgreSQL.
+    
+    
 Running Your Application
 ------------------------
 
-Now, you can run the application locally.
+You can run your application locally in two ways:
+
+Either by doing:
+    
+    $ python runserver.py
+    
+Which will use Flask's built in web server.
+
+Or by doing:
 
     $ foreman start
 
 You can also specify what port you'd prefer to use.
 
     $ foreman start -p 5555
+    
+Which you use the setup in the Procfile (initaly gunicorn).
 
 
 Deploying
@@ -162,6 +186,11 @@ And, to deactivate `virtualenv` (once you've finished coding), you
 simply run the following command:
 
     $ deactivate
+    
+If your application can't find it's database you may need to add it 
+explicitly like this: 
+
+    $ heroku addons:add shared-database
 
 
 Next Steps
@@ -212,7 +241,8 @@ can also easily add a custom domain to your application.
     $ heroku domains:add www.mydomainname.com
 
 You can add a [naked domain
-name](http://devcenter.heroku.com/articles/custom-domains), too.
+name](http://devcenter.heroku.com/articles/custom-domains), too 
+(although apparently they're [bad news](https://devcenter.heroku.com/articles/avoiding-naked-domains-dns-arecords)).
 
     $ heroku domains:add mydomainname.com
 
