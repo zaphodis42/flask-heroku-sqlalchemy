@@ -152,7 +152,7 @@ You can also specify what port you'd prefer to use.
 
     $ foreman start -p 5555
     
-Which you use the setup in the Procfile (initaly gunicorn).
+Which will use the setup in the Procfile (initaly gunicorn).
 
 
 Deploying
