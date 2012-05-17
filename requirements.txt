@@ -1,17 +1,7 @@
-# ----------------------
-# Flask
-# ----------------------
-flask
-
-
-# ----------------------
-# Testing
-# ----------------------
-mock
-
-
-# ----------------------
-# Production Server
-# ----------------------
-gevent
-gunicorn
+Flask==0.8
+Jinja2==2.6
+SQLAlchemy==0.7.7
+Werkzeug==0.8.3
+distribute==0.6.24
+gunicorn==0.14.3
+psycopg2==2.4.5
