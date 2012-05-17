@@ -8,6 +8,8 @@ This file creates your application.
 
 import os
 from flask import Flask, render_template, request, redirect, url_for
+from app.database import db_session
+
 
 app = Flask(__name__)
 
@@ -59,6 +61,14 @@ def add_header(response):
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
+
+###
+# Remove database conection.
+###
+
+@app.teardown_request
+def shutdown_session(exception=None):
+    db_session.remove()
 
 
 if __name__ == '__main__':
