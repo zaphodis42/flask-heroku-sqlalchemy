@@ -22,9 +22,9 @@ Flask Heroku (and SQLAlchemy)
  
                     github.com/zachwill/flask_heroku
                     
-                           (and SQLAlchemy)
+                            (and SQLAlchemy)
                            
-                     github.com/HexIce/flask_heroku
+                github.com/chromy/flask-heroku-sqlalchemy
 
 </code></pre>
 
